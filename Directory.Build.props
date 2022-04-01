@@ -1,0 +1,36 @@
+<Project>
+  <PropertyGroup>
+    <TargetFrameworkName>net6.0</TargetFrameworkName>
+    <AspNetVersion>6.0.*</AspNetVersion>
+    <EFCoreVersion>6.0.*</EFCoreVersion>
+    <EFCorePostgresVersion>6.0.*</EFCorePostgresVersion>
+    <MicrosoftCodeAnalysisVersion>4.0.*</MicrosoftCodeAnalysisVersion>
+    <HumanizerVersion>2.*</HumanizerVersion>
+    <JsonApiDotNetCoreVersionPrefix>5.0.0</JsonApiDotNetCoreVersionPrefix>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)CodingGuidelines.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>9999</WarningLevel>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" PrivateAssets="All" />
+    <PackageReference Include="CSharpGuidelinesAnalyzer" Version="3.7.1" PrivateAssets="All" />
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)CSharpGuidelinesAnalyzer.config" Visible="False" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Test Project Dependencies -->
+  <PropertyGroup>
+    <CoverletVersion>3.1.2</CoverletVersion>
+    <MoqVersion>4.16.1</MoqVersion>
+    <TestSdkVersion>17.1.0</TestSdkVersion>
+  </PropertyGroup>
+</Project>
